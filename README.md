@@ -95,7 +95,7 @@ Now we just have to tell the script to generate the dat file (this will take aro
 For this example the command would be
 
 ~~~
-    [thomas@HackBox libretro-dat-pull]$ python2 generate-libretrodat.py openvgdb.sqlite 38 '{"game":{"rom":{"serial":"romSerial","image":"romFileName"},"name":"romExtensionlessFileName","description":"romExtensionlessFileName"}}' ps.dat
+    [thomas@HackBox libretro-dat-pull]$ python2 generate-libretrodat.py 38 '{"game":{"rom":{"serial":"romSerial","image":"romFileName"},"name":"romExtensionlessFileName","description":"romExtensionlessFileName"}}' ps.dat
 ~~~
 You can even add multiple dictionaries the syntax is
 ~~~

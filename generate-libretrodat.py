@@ -3,21 +3,11 @@
 import sys,ast
 import openvgdb
 
-
-string="{'game':{'name':'iru','desc':'iru','rom':{'name':'iru','serial':'iru'}}}"
 string='{"game":{"rom":{"serial":"romSerial","image":"romFileName"},"name":"romExtensionlessFileName","description":"romExtensionlessFileName"}}'
 par=ast.literal_eval(string)
-#par=ast.literal_eval(sys.argv[1])
-#I have to integrate $year and $month as static stuff and check for it
 games=[]
 game=[]
 val='game'
-
-def test(foo):
-    return foo[::-1]
-
-
-
 
 def parse(a,level):
     ret=[]
@@ -26,7 +16,7 @@ def parse(a,level):
         if type(a[entry])==type({}):
             last.append("\t"*level+str(entry)+" ( \n")
             last.append(parse(a[entry],level+1))
-            last.append("\t"*level+")\n")
+            last.append("\t"*level+")\n\n")
         else:
             value=game[a[entry]]
             if type(value)==type(42):
