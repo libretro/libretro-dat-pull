@@ -8,6 +8,7 @@ We'll try to generate https://github.com/libretro/libretro-database/blob/master/
 First we have to analyze the database
 Just select a console and you will get the first game for it from the db
 First we select a system
+~~~
     [thomas@HackBox libretro-dat-pull]$ python2 analyze.py openvgdb.sqlite
     1 3DO Interactive Multiplayer
     2 Arcade
@@ -49,8 +50,9 @@ First we select a system
     38 Sony PlayStation
     39 Sony PlayStation Portable
     40 Magnavox Odyssey2
-
+~~~
 As an example I choose Playstation 1 (38)
+~~~
     [thomas@HackBox libretro-dat-pull]$ python2 analyze.py openvgdb.sqlite 38
     Fields you get:
     releaseCoverCart -> None
@@ -84,7 +86,7 @@ As an example I choose Playstation 1 (38)
     TEMPregionLocalizedName -> Japan
     releaseGenre -> Adventure,General
     releaseCoverDisc -> None
-
+~~~
 We can see that the serial entry is saved under "romSerial".
 The image is saved under "romFileName"
 and for the description and name we can use "romExtensionlessFileName"
@@ -92,7 +94,10 @@ and for the description and name we can use "romExtensionlessFileName"
 Now we just have to tell the script to generate the dat file (this will take around a minute)
 For this example the command would be
 
+~~~
     [thomas@HackBox libretro-dat-pull]$ python2 generate-libretrodat.py openvgdb.sqlite 38 '{"game":{"rom":{"serial":"romSerial","image":"romFileName"},"name":"romExtensionlessFileName","description":"romExtensionlessFileName"}}' ps.dat
-
+~~~
 You can even add multiple dictionaries the syntax is
+~~~
 python2 generate-libretrodat.py sqlite id string1 string1.dat string2 string2.dat
+~~~
