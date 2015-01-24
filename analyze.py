@@ -10,7 +10,7 @@ if len(sys.argv)==2:
     for system in systems:
         print str(system) +" "+ systems[system]
 elif len(sys.argv)==3:
-
+    print "%s entries" % (vgdb.get_console_len(sys.argv[2]))
     print "Fields you get:"
     game=vgdb.get_console_fg(sys.argv[2])
     for field in game:

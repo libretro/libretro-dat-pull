@@ -48,7 +48,14 @@ for i in range(0,(len(sys.argv)-2)/2):
     f=open(sys.argv[3+i*2],"w")
     print 'writing '+sys.argv[3+i*2]
     f.write(header)
-    for game in games:
+    for gname in games:
+        if len(games[gname]) > 1:
+            print 'Found multi disc rom'
+            print gname
+            for g in games[gname]:
+                print g['romFileName']
+        else:
+            game=games[gname][0]
         f.write(parse(par,0))
     f.close()
 print 'Done everything went according to plan'
