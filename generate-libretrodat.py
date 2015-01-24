@@ -21,18 +21,19 @@ def test(foo):
 
 def parse(a,level):
     ret=[]
+    last=[]
     for entry in a:
         if type(a[entry])==type({}):
-            ret.append("\t"*level+str(entry)+" (")
-            ret.append(parse(a[entry],level+1))
-            ret.append("\t"*level+")\n")
+            last.append("\t"*level+str(entry)+" ( \n")
+            last.append(parse(a[entry],level+1))
+            last.append("\t"*level+")\n")
         else:
             value=game[a[entry]]
             if type(value)==type(42):
                 ret.append("\t"*level+str(entry)+" "+str(value)+"\n")
             else:
                 ret.append("\t"*level+str(entry)+' "'+str(value)+'"\n')
-    return "".join(ret)
+    return "".join(ret)+"".join(last)
 
 #for i in range(2,len)
 if len(sys.argv)%2!=0:
@@ -41,9 +42,9 @@ if len(sys.argv)%2!=0:
 
 O=openvgdb.vgdb('openvgdb.sqlite')
 print 'Getting the game list.This can take a while...'
-header="clrmamepro ( \
+header="clrmamepro ( \n\
 name \""+O.get_systems()[int(sys.argv[1])]+"\"\n\
-)"
+)\n"
 games=O.get_console(sys.argv[1])
 print 'Done.Starting to convert'
 #print game
