@@ -68,8 +68,13 @@ class vgdb:
     def get_console(self,system):
         roms=self.cur.execute('SELECT * FROM ROMS where systemID='+str(system)).fetchall()
         games=[]
-        stime=time.time()
         for rom in roms:
             games.append(dict(self.get_gameinfo(rom['romID']).items()+rom.items()))
+#            print dict(self.get_gameinfo(rom['romID']).items()+rom.items())
 #            games.append(self.get_gameinfo(rom['romID']))
         return games
+
+    def get_console_fg(self,system):
+        rom=self.cur.execute('SELECT * FROM ROMS where systemID='+str(system)).fetchone()
+#            games.append(self.get_gameinfo(rom['romID']))
+        return dict(self.get_gameinfo(rom['romID']).items()+rom.items())
