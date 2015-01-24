@@ -10,17 +10,17 @@ mon={'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oc
 def parse_date(taaag):
     #returns month, year or just year
     if not(taaag):
-        return False
+        return {'Month':None,'Year':None}
     if re.match('\D\D\D \d\d?, \d\d\d\d',taaag):
         tag=re.findall('(\D\D\D) \d\d?, (\d\d\d\d)',taaag)[0]
-        return mon[tag[0]],tag[1]
+        return {'Month':mon[tag[0]],'Year':tag[1]}
     elif re.match('\D\D\D\d\d?, \d\d\d\d',taaag):
         tag=re.findall('(\D\D\D)\d\d?, (\d\d\d\d)',taaag)[0]
-        return mon[tag[0]],tag[1]
+        return {'Month':mon[tag[0]],'Year':tag[1]}
     elif re.match('\d\d\d\d',taaag):
-        return int(taaag)
+        return {'Month':None,'Year':int(taaag)}
     else:
-        return False
+        return {'Month':None,'Year':None}
 
 def dict_factory(cursor, row):
     d = {}
@@ -52,7 +52,8 @@ class vgdb:
         game={}
         for rel in self.releases:
             if rel['romID']==gameid:
-                release=rel
+                da=parse_date(rel['releaseDate'])
+                release=dict(rel.items()+da.items())
                 break
         return release
 
@@ -70,11 +71,13 @@ class vgdb:
         games=[]
         for rom in roms:
             games.append(dict(self.get_gameinfo(rom['romID']).items()+rom.items()))
+
 #            print dict(self.get_gameinfo(rom['romID']).items()+rom.items())
 #            games.append(self.get_gameinfo(rom['romID']))
         return games
 
     def get_console_fg(self,system):
         rom=self.cur.execute('SELECT * FROM ROMS where systemID='+str(system)).fetchone()
+
 #            games.append(self.get_gameinfo(rom['romID']))
         return dict(self.get_gameinfo(rom['romID']).items()+rom.items())

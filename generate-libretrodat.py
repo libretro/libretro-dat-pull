@@ -25,7 +25,6 @@ def parse(a,level):
                 ret.append("\t"*level+str(entry)+' "'+str(value)+'"\n')
     return "".join(ret)+"".join(last)
 
-#for i in range(2,len)
 if len(sys.argv)%2!=0:
     print 'Something is wrong.Check your parameters again (the count is off)'
     quit()
