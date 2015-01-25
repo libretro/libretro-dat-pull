@@ -14,9 +14,14 @@ def parse(a,level):
     last=[]
     check=['crc','md5','sha1','serial']
     for entry in a:
-        if type(a[entry])==type({}):
+        if type(a[entry])==type({}) and entry=="game":
             last.append("\t"*level+str(entry)+" ( ")
             last.append(parse(a[entry],level+1))
+            last.append("\t"*level+")\n")
+        elif type(a[entry])==type({}) and entry=="rom":
+            last.append("\t"*level+str(entry)+" ( ")
+            last.append(parse(a[entry],level)[:-1])
+#            print parse(a[entry],level+1)[:-1]
             last.append("\t"*level+")\n")
         else:
             value=game[a[entry]]
@@ -28,8 +33,7 @@ def parse(a,level):
                 except:
                     print 'Couldn\'t parse'
                     print value
-            if level<2:
-                ret.append("\n")
+        ret.append("\n")
     return "".join(ret)+"".join(last)
 
 if len(sys.argv)%2!=0:
