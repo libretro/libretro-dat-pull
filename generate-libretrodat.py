@@ -19,10 +19,10 @@ def parse(a,level):
             last.append(parse(a[entry],level+1))
             last.append("\t"*level+")\n")
         elif type(a[entry])==type({}) and entry=="rom":
-            last.append("\t"*level+str(entry)+" ( ")
+            last.append(" "*level+str(entry)+" ( ")
             last.append(parse(a[entry],level)[:-1])
 #            print parse(a[entry],level+1)[:-1]
-            last.append("\t"*level+")\n")
+            last.append(" "*level+")\n")
         else:
             value=game[a[entry]]
             if type(value)==type(42) or entry in check:
