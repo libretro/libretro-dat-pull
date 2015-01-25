@@ -12,6 +12,7 @@ val='game'
 def parse(a,level):
     ret=[]
     last=[]
+    check=['crc','md5','sha1','serial']
     for entry in a:
         if type(a[entry])==type({}):
             last.append("\t"*level+str(entry)+" ( \n")
@@ -19,7 +20,7 @@ def parse(a,level):
             last.append("\t"*level+")\n\n")
         else:
             value=game[a[entry]]
-            if type(value)==type(42):
+            if type(value)==type(42) or entry in check:
                 ret.append("\t"*level+str(entry)+" "+str(value)+"\n")
             else:
                 ret.append("\t"*level+str(entry)+' "'+str(value)+'"\n')
