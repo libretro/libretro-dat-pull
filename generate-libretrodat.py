@@ -17,13 +17,19 @@ def parse(a,level):
         if type(a[entry])==type({}):
             last.append("\t"*level+str(entry)+" ( ")
             last.append(parse(a[entry],level+1))
-            last.append("\t"*level+")\n\n")
+            last.append("\t"*level+")\n")
         else:
             value=game[a[entry]]
             if type(value)==type(42) or entry in check:
-                ret.append("\t"*level+str(entry)+" "+str(value)+"\n")
+                ret.append("\t"*level+str(entry)+" "+str(value)+" ")
             else:
-                ret.append("\t"*level+str(entry)+' "'+str(value)+'"\n')
+                try:
+                    ret.append("\t"*level+str(entry)+' "'+str(value).encode('utf-8')+"\" ")
+                except:
+                    print 'Couldn\'t parse
+                    print value
+            if level<2:
+                ret.append("\n")
     return "".join(ret)+"".join(last)
 
 if len(sys.argv)%2!=0:
