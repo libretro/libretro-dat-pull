@@ -15,7 +15,7 @@ def parse(a,level):
     check=['crc','md5','sha1','serial']
     for entry in a:
         if type(a[entry])==type({}):
-            last.append("\t"*level+str(entry)+" ( \n")
+            last.append("\t"*level+str(entry)+" ( ")
             last.append(parse(a[entry],level+1))
             last.append("\t"*level+")\n\n")
         else:
