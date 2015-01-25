@@ -26,7 +26,7 @@ def parse(a,level):
                 try:
                     ret.append("\t"*level+str(entry)+' "'+str(value).encode('utf-8')+"\" ")
                 except:
-                    print 'Couldn\'t parse
+                    print 'Couldn\'t parse'
                     print value
             if level<2:
                 ret.append("\n")
