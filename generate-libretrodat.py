@@ -20,7 +20,7 @@ def parse(a,level,nnl=False):
     check=['crc','md5','sha1','serial']
     for entry in a:
         if type(a[entry])==type({}) and entry=="game":
-            last.append("\t"*level+str(entry)+" (")
+            last.append("\t"*level+str(entry)+" (\n")
             last.append(parse(a[entry],level+1))
             last.append("\t"*level+")\n")
         elif type(a[entry])==type({}) and entry=="rom":
@@ -37,7 +37,7 @@ def parse(a,level,nnl=False):
             else:
                 try:
                     if nnl==False:
-                        ret.append("\t"*level+str(entry)+' "'+str(value).encode('utf-8')+"\" ")
+                        ret.append("\t"*level+str(entry)+' "'+str(value).encode('utf-8')+"\"")
                     else:
                         ret.append(str(entry)+' "'+str(value).encode('utf-8')+"\" ")
                 except:
