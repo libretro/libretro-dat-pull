@@ -95,9 +95,9 @@ Now we just have to tell the script to generate the dat file (this will take aro
 For this example the command would be
 
 ~~~
-    [thomas@HackBox libretro-dat-pull]$ python2 generate-libretrodat.py 38 '{"game":{"rom":{"serial":"romSerial","image":"romFileName"},"name":"romExtensionlessFileName","description":"romExtensionlessFileName"}}' ps.dat
+[thomas@HackBox libretro-dat-pull]$ ./generate-dat.py 38 '{"game":{"rom":{"serial":"romSerial","image":"romFileName"},"name":"romExtensionlessFileName","description":"romExtensionlessFileName"}}' ps
 ~~~
 You can even add multiple dictionaries the syntax is
 ~~~
-python2 generate-libretrodat.py sqlite id string1 string1.dat string2 string2.dat
+python2 generate-libretrodat.py sqlite id string1 string2 system_dat_prefix
 ~~~
