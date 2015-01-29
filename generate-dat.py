@@ -11,7 +11,7 @@ def main():
     O=openvgdb.vgdb('openvgdb.sqlite')
     print 'Dumping %s' % O.get_systems()[args.sysid]
     print 'Getting the game list.'
-    header="clrmamepro (\r\n\tname \"%s\"\r\n)\r\n" % O.get_systems()[args.sysid]
+    header="clrmamepro (\r\n\tname \"%s\"\r\n)\r\n\r\n" % O.get_systems()[args.sysid]
     games=O.get_console(sys.argv[1])
     print 'Got the game list'
 #I will check here for the service later
@@ -23,7 +23,7 @@ def main():
         print 'writing '+fname
         f.write(header)
         for game in games:
-            f.write(parse(ast.literal_eval(d)))
+            f.write(parse(ast.literal_eval(d))+"\r\n")
         f.close()
 
 def test():
@@ -41,14 +41,13 @@ def get_arguments():
     return parser.parse_args()
 
 def parse(a,level=0):
-
     (ret,last)=([],[])
     check=['crc','md5','sha1','serial']
     for entry in a:
         if type(a[entry])==type({}):
             last.append("\t"*level+str(entry)+" (\r\n")
             last.append(parse(a[entry],level+1))
-            last.append("\t"*level+")\r\n\r\n")
+            last.append("\t"*level+")\r\n")
         else:
             value=game[a[entry]]
             if value!=None or (value==None and not(args.none)):
