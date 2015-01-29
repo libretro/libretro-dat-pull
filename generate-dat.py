@@ -39,7 +39,7 @@ def get_arguments():
 
 def parse(a,level=0):
     (ret,last)=([],[])
-    check=['crc','md5','sha1','serial']
+    check=['crc','md5','sha1']
     for entry in a:
         if type(a[entry])==type({}):
             last.append("\t"*level+str(entry)+" (\r\n")
