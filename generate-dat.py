@@ -30,7 +30,7 @@ def get_arguments():
 #TODO:
 #add an action command to dump/analyze/parse/...
     parser = ArgumentParser(description='Create dat file from databases')
-    parser.add_argument('--omitnone', '-n', dest='none', action='store_const', const=True, help='If a field is empty don\'t parse it')
+    parser.add_argument('--keep-none', '-n', dest='none', action='store_const', const=True, help='If a field is empty it will still get parsed')
     parser.add_argument('--service', metavar='Service', nargs=1, help='Service to use (right now only vgdb)', default='vgdb')
     parser.add_argument('sysid', type=int , metavar='systemid', help='The id of the system')
     parser.add_argument('dict', action='append', metavar='structure', help='The dictionary after which the dat gets modeled', nargs="+")
@@ -47,7 +47,7 @@ def parse(a,level=0):
             last.append("\t"*level+")\r\n")
         else:
             value=game[a[entry]]
-            if value!=None or (value==None and not(args.none)):
+            if value!=None or (value==None and args.none):
                 if type(value)==type(1) or entry in check:
                     ret.append("\t"*level+str(entry)+" "+str(value)+"\r\n")
                 else:
