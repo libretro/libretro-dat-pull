@@ -26,9 +26,6 @@ def main():
             f.write(parse(ast.literal_eval(d))+"\r\n")
         f.close()
 
-def test():
-    print foo
-
 def get_arguments():
 #TODO:
 #add an action command to dump/analyze/parse/...
@@ -60,7 +57,6 @@ def parse(a,level=0):
                         print 'Couldn\'t parse'
                         print value
     return "".join(ret)+"".join(last)
-
 
 if __name__ == '__main__':
     main()
