@@ -12,7 +12,7 @@ def main():
     print 'Dumping %s' % O.get_systems()[args.sysid]
     print 'Getting the game list.'
     header="clrmamepro (\r\n\tname \"%s\"\r\n)\r\n\r\n" % O.get_systems()[args.sysid]
-    games=O.get_console(sys.argv[1])
+    games=O.get_console(args.sysid)
     print 'Got the game list'
 #I will check here for the service later
     count=0
