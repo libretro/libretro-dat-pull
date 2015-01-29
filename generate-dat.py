@@ -54,7 +54,7 @@ def parse(a,level=0):
                     try:
                         ret.append("\t"*level+str(entry)+' "'+str(value).encode('utf-8')+"\"\r\n")
                     except:
-                        print 'Couldn\'t parse'
+                        print "Couldn't parse"
                         print value
     return "".join(ret)+"".join(last)
 
