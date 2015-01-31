@@ -78,6 +78,8 @@ class vgdb:
 
     def get_console_fg(self,system):
         rom=self.cur.execute('SELECT * FROM ROMS where systemID='+str(system)).fetchone()
-
 #            games.append(self.get_gameinfo(rom['romID']))
-        return dict(self.get_gameinfo(rom['romID']).items()+rom.items())
+        if rom==None:
+            return []
+        else:
+            return dict(self.get_gameinfo(rom['romID']).items()+rom.items())

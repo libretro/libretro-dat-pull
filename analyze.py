@@ -11,7 +11,10 @@ if len(sys.argv)==2:
         print str(system) +" "+ systems[system]
 elif len(sys.argv)==3:
 
-    print "Fields you get:"
     game=vgdb.get_console_fg(sys.argv[2])
+    if game==[]:
+        print "No Roms listed for this system"
+        quit()
+    print "Fields you get:"
     for field in game:
         print field+" -> "+str(game[field])
