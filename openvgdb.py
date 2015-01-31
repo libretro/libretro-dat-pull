@@ -17,7 +17,8 @@ def parse_date(taaag):
         tag=re.findall('(\D\D\D)\d\d?, (\d\d\d\d)',taaag)[0]
         return {'Month':mon[tag[0]],'Year':tag[1]}
     elif re.match('\d\d\d\d',taaag):
-        return {'Month':None,'Year':int(taaag)}
+        tag=re.findall('(\d\d\d\d)',taaag)[0]
+        return {'Month':None,'Year':int(tag)}
     else:
         return {'Month':None,'Year':None}
 
