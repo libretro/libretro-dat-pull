@@ -16,15 +16,24 @@ def main():
     print 'Got the game list'
 #I will check here for the service later
     count=0
-    for d in args.dict[0]:
-        count=count+1
-        fname=args.file[0]+'_'+str(count)+'.dat'
+    if len(args.dict[0])==1:
+        fname=args.file[0]+'.dat'
         f=open(fname,"w")
         print 'writing '+fname
         f.write(header)
         for game in games:
             f.write(parse(ast.literal_eval(d))+"\r\n")
         f.close()
+    else:
+        for d in args.dict[0]:
+            count=count+1
+            fname=args.file[0]+'_'+str(count)+'.dat'
+            f=open(fname,"w")
+            print 'writing '+fname
+            f.write(header)
+            for game in games:
+                f.write(parse(ast.literal_eval(d))+"\r\n")
+            f.close()
 
 def get_arguments():
 #TODO:
