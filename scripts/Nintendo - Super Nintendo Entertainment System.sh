@@ -1,27 +1,47 @@
 #!/bin/sh
 
+SYSTEMID_SNES=26
+ABBREV_SYSTEMNAME_SNES="SNES"
+SYSTEMNAME_SNES="Nintendo - Super Nintendo Entertainment System"
+
+_gen_developer_snes() {
+   echo "--- ${2} - DAT Developer"
+   ./generate-dat.py ${3} '{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionlessFileName","developer":"releaseDeveloper"}}' "${1}"
+   mv "${1}.dat" "metadat/developer/${2}.dat"
+}
+
 gen_developer_snes() {
-   echo "--- Super Nintendo Entertainment System - DAT Developer"
-   ./generate-dat.py 26 '{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionlessFileName","developer":"releaseDeveloper"}}' "SNES"
-   mv "SNES_1.dat" "metadat/developer/Nintendo - Super Nintendo Entertainment System.dat"
+   _gen_developer_snes "${ABBREV_SYSTEMNAME_SNES}" "${SYSTEMNAME_SNES}" ${SYSTEMID_SNES}
+}
+
+_gen_publisher_snes() {
+   echo "--- ${2} - DAT Publisher"
+   ./generate-dat.py ${3} '{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionlessFileName","publisher":"releasePublisher"}}' "${1}"
+   mv "${1}.dat" "metadat/publisher/${2}.dat"
 }
 
 gen_publisher_snes() {
-   echo "--- Super Nintendo Entertainment System - DAT Publisher"
-   ./generate-dat.py 26 '{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionlessFileName","publisher":"releasePublisher"}}' "SNES"
-   mv "SNES_1.dat" "metadat/publisher/Nintendo - Super Nintendo Entertainment System.dat"
+   _gen_publisher_snes "${ABBREV_SYSTEMNAME_SNES}" "${SYSTEMNAME_SNES}" ${SYSTEMID_SNES}
+}
+
+_gen_releaseyear_snes() {
+   echo "--- ${2} - DAT Releaseyear"
+   ./generate-dat.py ${3} '{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionlessFileName","releaseyear":"Year"}}' "${1}"
+   mv "${1}.dat" "metadat/releaseyear/${2}.dat"
 }
 
 gen_releaseyear_snes() {
-   echo "--- Super Nintendo Entertainment System - DAT Releaseyear"
-   ./generate-dat.py 26 '{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionlessFileName","releaseyear":"Year"}}' "SNES"
-   mv "SNES_1.dat" "metadat/releaseyear/Nintendo - Super Nintendo Entertainment System.dat"
+   _gen_releaseyear_snes "${ABBREV_SYSTEMNAME_SNES}" "${SYSTEMNAME_SNES}" ${SYSTEMID_SNES}
+}
+
+_gen_releasemonth_snes() {
+   echo "--- ${2} - DAT Releasemonth"
+   ./generate-dat.py ${3} '{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionlessFileName","releasemonth":"Month"}}' "${1}"
+   mv "${1}.dat" "metadat/releasemonth/${2}.dat"
 }
 
 gen_releasemonth_snes() {
-   echo "--- Super Nintendo Entertainment System - DAT Releasemonth"
-   ./generate-dat.py 26 '{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionlessFileName","releasemonth":"Month"}}' "SNES"
-   mv "SNES_1.dat" "metadat/releasemonth/Nintendo - Super Nintendo Entertainment System.dat"
+   _gen_releasemonth_snes "${ABBREV_SYSTEMNAME_SNES}" "${SYSTEMNAME_SNES}" ${SYSTEMID_SNES}
 }
 
 gen_snes() {
