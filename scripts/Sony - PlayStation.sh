@@ -6,7 +6,7 @@ SYSTEMNAME_PS1="Sony - PlayStation"
 
 _gen_dat_ps1() {
    echo "--- ${2} - DAT"
-   ./generate-dat.py -s ${3} '{"game":{"rom":{"serial":"romSerial","image":"romFileName"},"name":"romExtensionlessFileName"}}' "${1}"
+   ./generate-dat.py ${3} '{"game":{"rom":{"serial":"romSerial","image":"romFileName"},"name":"romExtensionlessFileName"}}' "${1}"
    mv "${1}.dat" "dat/${2}.dat"
 }
 
