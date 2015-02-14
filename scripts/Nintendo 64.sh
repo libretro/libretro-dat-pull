@@ -2,7 +2,7 @@
 
 SYSTEMID_N64=23
 ABBREV_SYSTEMNAME_N64="N64"
-SYSTEMNAME_N64="Nintendo 64"
+SYSTEMNAME_N64="Nintendo - Nintendo 64"
 
 _gen_developer_n64() {
    echo "--- ${2} - DAT Developer"
