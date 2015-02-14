@@ -10,6 +10,7 @@ fi
 
 . ./scripts/create_dat_structure.sh
 
+. "./scripts/Atari - Jaguar.sh"
 . "./scripts/MAME.sh"
 . "./scripts/Sony - PlayStation.sh"
 . "./scripts/Sony - PlayStation Portable.sh"
@@ -17,11 +18,14 @@ fi
 . "./scripts/Nintendo - Nintendo Entertainment System.sh"
 . "./scripts/Nintendo - Super Nintendo Entertainment System.sh"
 . "./scripts/Nintendo - Game Boy Advance.sh"
+. "./scripts/Sega - Mega Drive - Genesis.sh"
 
 if [ $1 ]; then
    $1
 else
+   gen_jag
    gen_mame
+   gen_gen
    gen_n64
    gen_ps1
    gen_psp
