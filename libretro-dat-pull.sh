@@ -18,6 +18,8 @@ fi
 . "./scripts/Nintendo - Nintendo Entertainment System.sh"
 . "./scripts/Nintendo - Super Nintendo Entertainment System.sh"
 . "./scripts/Nintendo - Game Boy Advance.sh"
+. "./scripts/Nintendo - Game Boy Color.sh"
+. "./scripts/Nintendo - Game Boy.sh"
 . "./scripts/Sega - Mega Drive - Genesis.sh"
 
 if [ $1 ]; then
@@ -32,4 +34,6 @@ else
    gen_nes
    gen_snes
    gen_gba
+   gen_gbc
+   gen_gb
 fi
