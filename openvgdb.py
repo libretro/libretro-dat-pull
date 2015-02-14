@@ -26,9 +26,12 @@ def parse_date(taaag):
     elif re.match('(\D\D\D) (\d\d\d\d)',taaag):
         tag=re.findall('(\D\D\D) (\d\d\d\d)',taaag)[0]
         return {'Month':mon[tag[0]],'Year':int(tag[1])}
+    elif re.match('(\D\D\D), (\d\d\d\d)',taaag):
+        tag=re.findall('(\D\D\D), (\d\d\d\d)',taaag)[0]
+        return {'Month':mon[tag[0]],'Year':int(tag[1])}
     elif re.match('(\D+), (\d\d\d\d)',taaag):
         tag=re.findall('(\D+), (\d\d\d\d)',taaag)[0]
-        return {'Month':mon[tag[0]],'Year':int(tag[1])}
+        return {'Month':months[tag[0]],'Year':int(tag[1])}
     else:
         if debug==1:
             print taaag
