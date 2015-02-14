@@ -5,6 +5,7 @@ import sys,re,time
 
 months={'January':1,'February':2,'March':3,'April':4,'May':5,'June':6,'July':7,'August':8,'September':9,'October':10,'November':11,'December':12}
 mon={'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}
+debug=0
 
 def parse_date(taaag):
     #returns month, year or just year
@@ -49,13 +50,11 @@ class vgdb:
         return tables
 
     def get_gameinfo(self,gameid):
-        game={}
+#        game={}
         for rel in self.releases:
             if rel['romID']==gameid:
-                da=parse_date(rel['releaseDate'])
-#                release=dict(rel.items()+da.items())
                 release=rel.copy()
-                release.update(da)
+                release.update(parse_date(rel['releaseDate']))
                 break
         return release
 
@@ -71,11 +70,16 @@ class vgdb:
     def get_console(self,system):
         roms=self.cur.execute('SELECT * FROM ROMS where systemID='+str(system)).fetchall()
         games=[]
+        append=games.append
+        if debug==1:
+            stime=time.time()
         for rom in roms:
             ndict=self.get_gameinfo(rom['romID']).copy()
             ndict.update(rom.items())
-            games.append(ndict)
-
+            append(ndict)
+        if debug==1:
+            print('Took %s seconds' % str(time.time()-stime))
+#        print games
 #            print dict(self.get_gameinfo(rom['romID']).items()+rom.items())
 #            games.append(self.get_gameinfo(rom['romID']))
         return games

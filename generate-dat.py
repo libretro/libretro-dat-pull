@@ -28,25 +28,27 @@ def main():
         for game in games:
             if args.stop:
 #                print 'Checking for empty values'
-                if check_first(game):
+                if check_entry(game,d):
                     f.write(parse(ast.literal_eval(d))+"\r\n")
             else:
                 f.write(parse(ast.literal_eval(d))+"\r\n")
         f.close()
 
-def check_first(game):
-    for d in args.dict[0]:
-        for foo in ast.literal_eval(d)['game']:
-            field=ast.literal_eval(d)['game'][foo]
-            if type(field) != type({}):
-                if game[field]==None:
-#                    print("Empty field %s detected." % (field))
+def check_entry(game,d):
+    #checks if entry has an entry empty
+    for foo in ast.literal_eval(d)['game']:
+        field=ast.literal_eval(d)['game'][foo]
+        if type(field) != type({}):
+            if game[field]==None:
+                if debug==1:
+                    print("Empty field %s detected." % (field))
+                return False
+        else:
+            for bar in field:
+                if game[field[bar]]==None:
+                    if debug==1:
+                        print("Empty field %s detected." % (field))
                     return False
-            else:
-                for bar in field:
-                    if game[field[bar]]==None:
-#                        print("Empty field %s detected." % (field))
-                        return False
 #    print('Non empty field detected')
     return True
 
