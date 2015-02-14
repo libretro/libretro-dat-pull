@@ -2,7 +2,7 @@
 
 SYSTEMID_GBA=20
 ABBREV_SYSTEMNAME_GBA="GBA"
-SYSTEMNAME_GBA="Nintendo - Nintendo Game Boy Advance"
+SYSTEMNAME_GBA="Nintendo - Game Boy Advance"
 
 _gen_developer_gba() {
    echo "--- ${2} - DAT Developer"
