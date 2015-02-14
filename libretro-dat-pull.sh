@@ -1,5 +1,13 @@
 #!/bin/sh
 
+if [ "$(which pypy 2> /dev/null)" ];then
+    PYTHON=$(which pypy)
+elif [ "$(which python2 2> /dev/null)" ];then
+    PYTHON=$(which python2)
+else
+    echo "python is missing"
+fi
+
 . ./scripts/create_dat_structure.sh
 
 . "./scripts/MAME.sh"

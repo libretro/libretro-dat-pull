@@ -6,7 +6,7 @@ SYSTEMNAME_MAME="MAME"
 
 _gen_dat_mame() {
    echo "--- ${2} - DAT"
-   ./generate-dat.py ${3} '{"game":{"rom":{"name":"romFileName","size":"romSize","md5":"romHashMD5","crc":"romHashCRC","sha1":"romHashSHA1"},"name":"releaseTitleName"}}' "${1}"
+   $PYTHON ./generate-dat.py ${3} '{"game":{"rom":{"name":"romFileName","size":"romSize","md5":"romHashMD5","crc":"romHashCRC","sha1":"romHashSHA1"},"name":"releaseTitleName"}}' "${1}"
    mv "${1}.dat" "dat/${2}.dat"
 }
 
