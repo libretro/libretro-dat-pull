@@ -8,6 +8,7 @@ GEN_DEVELOPER_SNES='{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionless
 GEN_PUBLISHER_SNES='{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionlessFileName","publisher":"releasePublisher"}}'
 GEN_RELEASEYEAR_SNES='{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionlessFileName","releaseyear":"Year"}}'
 GEN_RELEASEMONTH_SNES='{"game":{"rom":{"crc":"romHashCRC"},"name":"romExtensionlessFileName","releasemonth":"Month"}}'
+
 _gen_developer_snes() {
    echo "--- ${2} - DAT Developer"
    $PYTHON ./generate-dat.py -s ${3} ${GEN_DEVELOPER_SNES} "${1}"
