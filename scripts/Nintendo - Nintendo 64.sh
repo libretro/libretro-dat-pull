@@ -51,15 +51,11 @@ gen_releasemonth_n64() {
 
 _gen_n64() {
    #DOESN'T WORK
-   #$PYTHON ./generate-dat.py -s ${3} "${GEN_DEVELOPER_N64}" "${GEN_PUBLISHER_N64}" "${GEN_RELEASEYEAR_N64}" "${GEN_RELEASEMONTH_N64}" "${1}"
-   #mv "${1}_1.dat" "metadat/developer/${2}.dat"
-   #mv "${1}_2.dat" "metadat/publisher/${2}.dat"
-   #mv "${1}_3.dat" "metadat/releaseyear/${2}.dat"
-   #mv "${1}_4.dat" "metadat/releasemonth/${2}.dat"
-   gen_developer_n64
-   gen_publisher_n64
-   gen_releaseyear_n64
-   gen_releasemonth_n64
+   $PYTHON ./generate-dat.py -s ${3} "${GEN_DEVELOPER_N64}" "${GEN_PUBLISHER_N64}" "${GEN_RELEASEYEAR_N64}" "${GEN_RELEASEMONTH_N64}" "${1}"
+   mv "${1}_1.dat" "metadat/developer/${2}.dat"
+   mv "${1}_2.dat" "metadat/publisher/${2}.dat"
+   mv "${1}_3.dat" "metadat/releaseyear/${2}.dat"
+   mv "${1}_4.dat" "metadat/releasemonth/${2}.dat"
 }
 
 gen_n64() {
