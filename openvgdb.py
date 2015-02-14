@@ -20,7 +20,18 @@ def parse_date(taaag):
     elif re.match('\d\d\d\d',taaag):
         tag=re.findall('(\d\d\d\d)',taaag)[0]
         return {'Month':None,'Year':int(tag)}
+    elif re.match('(\D\D\D\D+) (\d\d\d\d)',taaag):
+        tag=re.findall('(\D+) (\d\d\d\d)',taaag)[0]
+        return {'Month':months[tag[0]],'Year':int(tag[1])}
+    elif re.match('(\D\D\D) (\d\d\d\d)',taaag):
+        tag=re.findall('(\D\D\D) (\d\d\d\d)',taaag)[0]
+        return {'Month':mon[tag[0]],'Year':int(tag[1])}
+    elif re.match('(\D+), (\d\d\d\d)',taaag):
+        tag=re.findall('(\D+), (\d\d\d\d)',taaag)[0]
+        return {'Month':mon[tag[0]],'Year':int(tag[1])}
     else:
+        if debug==1:
+            print taaag
         return {'Month':None,'Year':None}
 
 def dict_factory(cursor, row):
