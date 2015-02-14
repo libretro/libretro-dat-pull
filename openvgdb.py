@@ -53,7 +53,9 @@ class vgdb:
         for rel in self.releases:
             if rel['romID']==gameid:
                 da=parse_date(rel['releaseDate'])
-                release=dict(rel.items()+da.items())
+#                release=dict(rel.items()+da.items())
+                release=rel.copy()
+                release.update(da)
                 break
         return release
 
@@ -70,7 +72,9 @@ class vgdb:
         roms=self.cur.execute('SELECT * FROM ROMS where systemID='+str(system)).fetchall()
         games=[]
         for rom in roms:
-            games.append(dict(self.get_gameinfo(rom['romID']).items()+rom.items()))
+            ndict=self.get_gameinfo(rom['romID']).copy()
+            ndict.update(rom.items())
+            games.append(ndict)
 
 #            print dict(self.get_gameinfo(rom['romID']).items()+rom.items())
 #            games.append(self.get_gameinfo(rom['romID']))

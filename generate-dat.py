@@ -9,11 +9,11 @@ def main():
     global game,args
     args = get_arguments()
     O=openvgdb.vgdb('openvgdb.sqlite')
-    print 'Dumping %s' % O.get_systems()[args.sysid]
-    print 'Getting the game list.'
+    print('Dumping %s' % O.get_systems()[args.sysid])
+    print('Getting the game list.')
     header="clrmamepro (\r\n\tname \"%s\"\r\n)\r\n\r\n" % O.get_systems()[args.sysid]
     games=O.get_console(args.sysid)
-    print 'Got the game list'
+    print('Got the game list')
 #I will check here for the service later
     count=0
     for d in args.dict[0]:
@@ -23,7 +23,7 @@ def main():
         else:
             fname=args.file[0]+'_'+str(count)+'.dat'
         f=open(fname,"w")
-        print 'writing '+fname
+        print('writing '+fname)
         f.write(header)
         for game in games:
             if args.stop:
@@ -40,14 +40,14 @@ def check_first(game):
             field=ast.literal_eval(d)['game'][foo]
             if type(field) != type({}):
                 if game[field]==None:
-#                    print "Empty field %s detected." % (field)
+#                    print("Empty field %s detected." % (field))
                     return False
             else:
                 for bar in field:
                     if game[field[bar]]==None:
-#                        print "Empty field %s detected." % (field)
+#                        print("Empty field %s detected." % (field))
                         return False
-#    print 'Non empty field detected'
+#    print('Non empty field detected')
     return True
 
 def get_arguments():
@@ -79,8 +79,8 @@ def parse(a,level=0):
                     try:
                         ret.append("\t"*level+str(entry)+' "'+str(value).encode('utf-8')+"\"\r\n")
                     except:
-                        print "Couldn't parse"
-                        print value
+                        print("Couldn't parse")
+                        print(value)
     return "".join(ret)+"".join(last)
 
 if __name__ == '__main__':
