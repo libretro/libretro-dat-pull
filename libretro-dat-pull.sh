@@ -20,6 +20,7 @@ fi
 . "./scripts/Nintendo - Game Boy Advance.sh"
 . "./scripts/Nintendo - Game Boy Color.sh"
 . "./scripts/Nintendo - Game Boy.sh"
+. "./scripts/Sega - 32X.sh"
 . "./scripts/Sega - Mega Drive - Genesis.sh"
 
 if [ $1 ]; then
@@ -36,4 +37,5 @@ else
    gen_gba
    gen_gbc
    gen_gb
+   gen_32x
 fi
