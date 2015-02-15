@@ -61,11 +61,12 @@ gen_releasemonth_psp() {
 }
 
 _gen_psp() {
-   $PYTHON ./generate-dat.py -s ${3} "${GEN_DEVELOPER_PSP}" "${GEN_PUBLISHER_PSP}" "${GEN_RELEASEYEAR_PSP}" "${GEN_RELEASEMONTH_PSP}" "${1}"
-   mv "${1}_1.dat" "metadat/developer/${2}.dat"
-   mv "${1}_2.dat" "metadat/publisher/${2}.dat"
-   mv "${1}_3.dat" "metadat/releaseyear/${2}.dat"
-   mv "${1}_4.dat" "metadat/releasemonth/${2}.dat"
+   $PYTHON ./generate-dat.py -s ${3} "${GEN_DAT_PSP}" "${GEN_DEVELOPER_PSP}" "${GEN_PUBLISHER_PSP}" "${GEN_RELEASEYEAR_PSP}" "${GEN_RELEASEMONTH_PSP}" "${1}"
+   mv "${1}_1.dat" "dat/${2}.dat"
+   mv "${1}_2.dat" "metadat/developer/${2}.dat"
+   mv "${1}_3.dat" "metadat/publisher/${2}.dat"
+   mv "${1}_4.dat" "metadat/releaseyear/${2}.dat"
+   mv "${1}_5.dat" "metadat/releasemonth/${2}.dat"
 }
 
 gen_psp() {
