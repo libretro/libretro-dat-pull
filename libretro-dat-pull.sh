@@ -20,6 +20,7 @@ fi
 . "./scripts/Nintendo - Game Boy Advance.sh"
 . "./scripts/Nintendo - Game Boy Color.sh"
 . "./scripts/Nintendo - Game Boy.sh"
+. "./scripts/Nintendo - Virtual Boy.sh"
 . "./scripts/Sega - 32X.sh"
 . "./scripts/Sega - Mega Drive - Genesis.sh"
 
@@ -38,4 +39,5 @@ else
    gen_gbc
    gen_gb
    gen_32x
+   gen_vb
 fi
