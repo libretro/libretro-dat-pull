@@ -69,6 +69,6 @@ _gen_ps1() {
 }
 
 gen_ps1() {
-   #gen_dat_ps1
+   gen_dat_ps1
    _gen_ps1 "${ABBREV_SYSTEMNAME_PS1}" "${SYSTEMNAME_PS1}" ${SYSTEMID_PS1}
 }
